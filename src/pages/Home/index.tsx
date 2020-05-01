@@ -2,9 +2,6 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {StyleSheet, View, Text, StatusBar} from 'react-native';
 import PrimaryButton from 'components/PrimaryButton';
-import createStackNavigator from '@react-navigation/stack';
-
-const stack = createStackNavigator();
 
 export default function Home() {
   return (

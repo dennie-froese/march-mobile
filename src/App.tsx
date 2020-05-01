@@ -1,32 +1,18 @@
 import React from 'react';
-import {StyleSheet, View, Text, StatusBar} from 'react-native';
-import PrimaryButton from 'components/PrimaryButton';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import HomeScreen from './pages/Home';
+import DetailScreen from './pages/Detail';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <View>
-        <Text style={styles.text}>New empty start</Text>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton
-            title="Please click me!"
-            onPress={() => {
-              console.warn('clicked');
-            }}
-          />
-        </View>
-      </View>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Detail" component={DetailScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  text: {
-    textAlign: 'center',
-    padding: 20,
-  },
-  buttonContainer: {
-    alignItems: 'center',
-  },
-});
