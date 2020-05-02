@@ -3,14 +3,14 @@ import React from 'react';
 import {StyleSheet, View, Text, StatusBar} from 'react-native';
 import PrimaryButton from 'components/PrimaryButton';
 
-export default function Detail({navigation}) {
+export default function Transactions({navigation}) {
   return (
     <View>
-      <Text style={styles.text}>This is the detail page!</Text>
+      <Text style={styles.text}>This is the transactions page!</Text>
       <View style={styles.buttonContainer}>
         <PrimaryButton
           title="Go back to home!"
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Balances')}
         />
       </View>
     </View>
