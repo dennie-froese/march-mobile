@@ -14,7 +14,9 @@ export default function Account({accountType}: Props) {
       <TouchableOpacity
         style={styles.accountHeader}
         onPress={() => {
-          navigation.navigate('Transactions');
+          navigation.navigate('Transactions', {
+            accountTypes: accountType,
+          });
         }}>
         <Text style={styles.accountType}>{accountType}</Text>
         <Text>33-20-44</Text>
