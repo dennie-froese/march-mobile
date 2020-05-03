@@ -4,18 +4,20 @@ import {useNavigation} from '@react-navigation/native';
 
 interface Props {
   accountType: string;
+  disabled?: boolean;
 }
 
-export default function Account({accountType}: Props) {
+export default function Account({accountType, disabled = false}: Props) {
   const navigation = useNavigation();
 
   return (
     <View>
       <TouchableOpacity
         style={styles.accountHeader}
+        disabled={disabled}
         onPress={() => {
           navigation.navigate('Transactions', {
-            accountTypes: accountType,
+            accountType,
           });
         }}>
         <Text style={styles.accountType}>{accountType}</Text>

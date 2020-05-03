@@ -1,12 +1,13 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {StyleSheet, View, Text, StatusBar} from 'react-native';
+import Account from 'components/Account';
 
-export default function Transactions({route, navigation}) {
-  const {accountTypes} = route.params;
+export default function Transactions({route}) {
+  const {accountType} = route.params;
   return (
     <View style={styles.transactionsContainer}>
-      <Text>{accountTypes}</Text>
+      <Account accountType={accountType} disabled />
     </View>
   );
 }
