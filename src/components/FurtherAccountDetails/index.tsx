@@ -7,15 +7,28 @@ import {
   Animated,
   Easing,
 } from 'react-native';
+import {tsConditionalType} from '@babel/types';
 
 export default function FurtherAccountDetails() {
   const [state, setState] = useState<
     null | 'growing' | 'doneGrowing' | 'shrinking' | 'doneShrinking'
   >(null);
   const height = useRef(new Animated.Value(0));
+  const dayList = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday ',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+  var today = new Date();
+  var day = today.getDay();
+  var hours = today.getHours();
+  var minutes = today.getMinutes();
 
   useEffect(() => {
-    console.warn(`asd: ${state}`);
     if (state === 'growing') {
       Animated.timing(height.current, {
         toValue: 1,
@@ -46,10 +59,10 @@ export default function FurtherAccountDetails() {
         </Text>
         <TouchableOpacity
           onPress={() => {
-            if (!state) {
-              setState('growing');
-            } else {
+            if (state === 'doneGrowing') {
               setState('shrinking');
+            } else {
+              setState('growing');
             }
           }}>
           <Text>Show</Text>
@@ -63,10 +76,10 @@ export default function FurtherAccountDetails() {
             ...styles.animatedView,
             ...{transform: [{scaleY: height.current}]},
           }}>
-          <Text> Go</Text>
+          <Text>Balance at</Text>
+          <Text>{`${dayList[day]}, ${hours}:${minutes}`}</Text>
         </Animated.View>
       ) : null}
-      <Text> Test</Text>
     </View>
   );
 }
@@ -83,7 +96,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   animatedView: {
-    backgroundColor: 'green',
+    backgroundColor: 'white',
+    paddingLeft: 10,
+    paddingTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     width: '100%',
   },
 });
