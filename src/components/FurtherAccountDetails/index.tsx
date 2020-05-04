@@ -14,25 +14,42 @@ export default function FurtherAccountDetails() {
     null | 'growing' | 'doneGrowing' | 'shrinking' | 'doneShrinking'
   >(null);
   const height = useRef(new Animated.Value(0));
+  const opacity = useRef(new Animated.Value(0));
 
   useEffect(() => {
     if (state === 'growing') {
-      Animated.timing(height.current, {
-        toValue: 1,
-        duration: 1000,
-        useNativeDriver: true,
-        easing: Easing.inOut(Easing.linear),
-      }).start(() => {
+      Animated.parallel([
+        Animated.timing(opacity.current, {
+          toValue: 1,
+          duration: 1000,
+          useNativeDriver: true,
+          easing: Easing.inOut(Easing.linear),
+        }),
+        Animated.timing(height.current, {
+          toValue: 1,
+          duration: 1000,
+          useNativeDriver: true,
+          easing: Easing.inOut(Easing.linear),
+        }),
+      ]).start(() => {
         setState('doneGrowing');
       });
     }
     if (state === 'shrinking') {
-      Animated.timing(height.current, {
-        toValue: 0,
-        duration: 1000,
-        useNativeDriver: true,
-        easing: Easing.inOut(Easing.linear),
-      }).start(() => {
+      Animated.parallel([
+        Animated.timing(opacity.current, {
+          toValue: 0,
+          duration: 1000,
+          useNativeDriver: true,
+          easing: Easing.inOut(Easing.linear),
+        }),
+        Animated.timing(height.current, {
+          toValue: 0,
+          duration: 1000,
+          useNativeDriver: true,
+          easing: Easing.inOut(Easing.linear),
+        }),
+      ]).start(() => {
         setState('doneShrinking');
       });
     }
@@ -61,7 +78,8 @@ export default function FurtherAccountDetails() {
         <Animated.View
           style={{
             ...styles.animatedView,
-            ...{transform: [{scaleY: height.current}]},
+            opacity: opacity.current,
+            transform: [{scaleY: height.current}],
           }}>
           <Text>Balance at</Text>
           <Text>{today()}</Text>
