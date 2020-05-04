@@ -7,26 +7,13 @@ import {
   Animated,
   Easing,
 } from 'react-native';
-import {tsConditionalType} from '@babel/types';
+import today from 'lib/today';
 
 export default function FurtherAccountDetails() {
   const [state, setState] = useState<
     null | 'growing' | 'doneGrowing' | 'shrinking' | 'doneShrinking'
   >(null);
   const height = useRef(new Animated.Value(0));
-  const dayList = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday ',
-    'Thursday',
-    'Friday',
-    'Saturday',
-  ];
-  var today = new Date();
-  var day = today.getDay();
-  var hours = today.getHours();
-  var minutes = today.getMinutes();
 
   useEffect(() => {
     if (state === 'growing') {
@@ -77,7 +64,7 @@ export default function FurtherAccountDetails() {
             ...{transform: [{scaleY: height.current}]},
           }}>
           <Text>Balance at</Text>
-          <Text>{`${dayList[day]}, ${hours}:${minutes}`}</Text>
+          <Text>{today()}</Text>
         </Animated.View>
       ) : null}
     </View>
