@@ -19,17 +19,18 @@ export default function Login() {
     <View style={styles.container}>
       <View style={styles.topContainer}>
         <View style={styles.welcomeContainer}>
-          <Text style={styles.text}>Welcome to BanKing!</Text>
+          <Text style={styles.textHeader}>Welcome to BanKing!</Text>
+          <Text style={styles.textSubheader}>
+            Use your credentials below and logon to your account
+          </Text>
         </View>
         <View style={styles.inputsContainer}>
-          <Text style={styles.text}>Please enter your user name:</Text>
           <TextInput
             style={styles.input}
             onChangeText={text => setUser(text)}
             value={user}
             placeholder={'Enter your user name'}
           />
-          <Text style={styles.text}>Please enter your password:</Text>
           <TextInput
             style={styles.input}
             onChangeText={text => setPassword(text)}
@@ -63,17 +64,31 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '90%',
   },
   inputsContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   input: {
     borderColor: 'black',
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 20,
     textAlign: 'center',
+    width: 300,
+  },
+  textHeader: {
+    textAlign: 'center',
+    padding: 10,
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  textSubheader: {
+    textAlign: 'center',
+    padding: 10,
+    fontSize: 20,
+    color: 'grey',
   },
   text: {
     textAlign: 'center',
