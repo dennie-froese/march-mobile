@@ -1,10 +1,9 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {StyleSheet, View, Text, StatusBar} from 'react-native';
-import PrimaryButton from 'components/PrimaryButton';
 import AccountContainer from 'components/AccountContainer';
 
-export default function Balances({navigation}) {
+export default function Balances() {
   return (
     <View>
       <Text style={styles.text}>Please find your account balances below:</Text>
