@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/core';
 export default function Login() {
   const navigation = useNavigation();
   const [user, setUser] = useState('');
+  const [password, setPassword] = useState('');
 
   function logon() {
     //some user auth logic
@@ -21,18 +22,18 @@ export default function Login() {
           <Text style={styles.text}>Welcome to BanKing!</Text>
         </View>
         <View style={styles.inputsContainer}>
-          <Text style={styles.text}>User name</Text>
+          <Text style={styles.text}>Please enter your user name:</Text>
           <TextInput
             style={styles.input}
             onChangeText={text => setUser(text)}
             value={user}
             placeholder={'Enter your user name'}
           />
-          <Text style={styles.text}>Password</Text>
+          <Text style={styles.text}>Please enter your password:</Text>
           <TextInput
             style={styles.input}
-            onChangeText={text => setUser(text)}
-            value={user}
+            onChangeText={text => setPassword(text)}
+            value={password}
             placeholder={'Enter your password'}
           />
         </View>
@@ -76,6 +77,7 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
+    padding: 10,
   },
   buttonContainer: {
     alignItems: 'center',
