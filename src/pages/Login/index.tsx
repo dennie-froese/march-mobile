@@ -8,10 +8,18 @@ export default function Login() {
   const navigation = useNavigation();
   const [user, setUser] = useState('');
 
+  function logon() {
+    //some user auth logic
+
+    navigation.navigate('Balances');
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
-        <Text style={styles.text}>Login</Text>
+        <View style={styles.welcomeContainer}>
+          <Text style={styles.text}>Welcome to BanKing!</Text>
+        </View>
         <View style={styles.inputsContainer}>
           <Text style={styles.text}>User name</Text>
           <TextInput
@@ -30,10 +38,7 @@ export default function Login() {
         </View>
       </View>
       <View style={styles.bottomContainer}>
-        <PrimaryButton
-          title="Log on!"
-          onPress={() => navigation.navigate('Balances')}
-        />
+        <PrimaryButton title="Log on!" onPress={logon} />
       </View>
     </View>
   );
@@ -43,17 +48,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-around',
   },
   topContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-around',
   },
   bottomContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  welcomeContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   inputsContainer: {
     flex: 1,
@@ -68,7 +76,6 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    paddingTop: 10,
   },
   buttonContainer: {
     alignItems: 'center',
