@@ -14,8 +14,12 @@ export default function Login() {
   function logon() {
     //some user auth logic
     // setError for wrong credentials
-
-    navigation.navigate('Balances');
+    if (user === 'dennie' && password === '12345') {
+      setError(false);
+      navigation.navigate('Balances');
+    } else {
+      setError(true);
+    }
   }
 
   return (
@@ -31,7 +35,7 @@ export default function Login() {
         <View style={styles.inputsContainer}>
           <TextInput
             style={{
-              borderColor: error ? colours.error : 'black',
+              borderColor: error ? colours.danger : 'black',
               borderWidth: StyleSheet.hairlineWidth,
               borderRadius: 20,
               textAlign: 'center',
@@ -43,7 +47,7 @@ export default function Login() {
           />
           <TextInput
             style={{
-              borderColor: error ? colours.error : 'black',
+              borderColor: error ? colours.danger : 'black',
               borderWidth: StyleSheet.hairlineWidth,
               borderRadius: 20,
               textAlign: 'center',
@@ -52,6 +56,7 @@ export default function Login() {
             onChangeText={text => setPassword(text)}
             value={password}
             placeholder={'Enter your password'}
+            secureTextEntry
           />
         </View>
       </View>
