@@ -8,6 +8,7 @@ export default function Login() {
   const navigation = useNavigation();
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
 
   function logon() {
     //some user auth logic
@@ -27,13 +28,25 @@ export default function Login() {
         </View>
         <View style={styles.inputsContainer}>
           <TextInput
-            style={styles.input}
+            style={{
+              borderColor: error ? 'red' : 'black',
+              borderWidth: 1,
+              borderRadius: 20,
+              textAlign: 'center',
+              width: 300,
+            }}
             onChangeText={text => setUser(text)}
             value={user}
             placeholder={'Enter your user name'}
           />
           <TextInput
-            style={styles.input}
+            style={{
+              borderColor: error ? 'red' : 'black',
+              borderWidth: 1,
+              borderRadius: 20,
+              textAlign: 'center',
+              width: 300,
+            }}
             onChangeText={text => setPassword(text)}
             value={password}
             placeholder={'Enter your password'}
@@ -71,13 +84,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
-  },
-  input: {
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 20,
-    textAlign: 'center',
-    width: 300,
   },
   textHeader: {
     textAlign: 'center',
