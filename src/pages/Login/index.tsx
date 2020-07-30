@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, TextInput, StatusBar} from 'react-native';
 import PrimaryButton from 'components/PrimaryButton';
+import {colours, spacing, borderRadii} from 'config/Theme';
 import {useNavigation} from '@react-navigation/core';
 
 export default function Login() {
@@ -12,13 +13,14 @@ export default function Login() {
 
   function logon() {
     //some user auth logic
+    // setError for wrong credentials
 
     navigation.navigate('Balances');
   }
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="#f4511e" />
+      <StatusBar backgroundColor={colours.orange} />
       <View style={styles.topContainer}>
         <View style={styles.welcomeContainer}>
           <Text style={styles.textHeader}>Welcome to BanKing!</Text>
@@ -29,8 +31,8 @@ export default function Login() {
         <View style={styles.inputsContainer}>
           <TextInput
             style={{
-              borderColor: error ? 'red' : 'black',
-              borderWidth: 1,
+              borderColor: error ? colours.error : 'black',
+              borderWidth: StyleSheet.hairlineWidth,
               borderRadius: 20,
               textAlign: 'center',
               width: 300,
@@ -41,8 +43,8 @@ export default function Login() {
           />
           <TextInput
             style={{
-              borderColor: error ? 'red' : 'black',
-              borderWidth: 1,
+              borderColor: error ? colours.error : 'black',
+              borderWidth: StyleSheet.hairlineWidth,
               borderRadius: 20,
               textAlign: 'center',
               width: 300,
@@ -54,7 +56,14 @@ export default function Login() {
         </View>
       </View>
       <View style={styles.bottomContainer}>
-        <PrimaryButton title="Log on!" onPress={logon} />
+        <PrimaryButton
+          title="Log in to your account!"
+          onPress={logon}
+          colourText={colours.white}
+          colourBG={colours.primary}
+          spacing={spacing.l}
+          borderRadius={borderRadii.xl}
+        />
       </View>
     </View>
   );

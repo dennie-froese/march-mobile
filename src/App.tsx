@@ -5,6 +5,7 @@ import Login from 'pages/Login';
 import Balances from 'pages/Balances';
 import Transactions from 'pages/Transactions';
 import {StackHeaderLeftButtonProps} from '@react-navigation/stack/lib/typescript/src/types';
+import {colours} from 'config/Theme';
 
 const Stack = createStackNavigator();
 
@@ -17,7 +18,7 @@ export default function App() {
           component={Login}
           options={{
             headerStyle: {
-              backgroundColor: '#f4511e',
+              backgroundColor: colours.orange,
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
