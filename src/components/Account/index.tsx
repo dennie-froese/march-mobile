@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import ProgressBar from '../ProgressBar';
+import {colours} from 'config/Theme';
 
 interface Props {
   accountType: string;
@@ -13,7 +15,7 @@ export default function Account({accountType, disabled = false}: Props) {
   return (
     <View>
       <TouchableOpacity
-        style={styles.accountHeader}
+        style={{...styles.accountHeader, borderColor: colours.primary}}
         disabled={disabled}
         onPress={() => {
           navigation.navigate('Transactions', {
@@ -35,6 +37,11 @@ export default function Account({accountType, disabled = false}: Props) {
           <Text>£200.10</Text>
         </View>
       </View>
+      {disabled ? (
+        <View style={{alignItems: 'center', paddingTop: 20}}>
+          <ProgressBar />
+        </View>
+      ) : null}
     </View>
   );
 }
@@ -43,7 +50,6 @@ const styles = StyleSheet.create({
   accountHeader: {
     flexDirection: 'row',
     borderStyle: 'solid',
-    borderColor: 'grey',
     borderBottomWidth: 2,
     padding: 10,
     alignContent: 'flex-start',
