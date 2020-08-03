@@ -4,6 +4,7 @@ import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import Account from 'components/Account';
 import FurtherAccountDetails from 'components/FurtherAccountDetails';
 import TransactionsList from 'components/TransactionsList';
+import {colours} from 'config/Theme';
 
 export default function Transactions({route}) {
   const {accountType} = route.params;
@@ -13,7 +14,7 @@ export default function Transactions({route}) {
         <Account accountType={accountType} disabled />
         <FurtherAccountDetails />
       </View>
-      <View style={styles.transactionsHeader}>
+      <View style={{backgroundColor: colours.grey, padding: 10}}>
         <Text style={styles.transactionsHeaderText}>Transactions</Text>
       </View>
       <TransactionsList />
@@ -26,10 +27,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   topContainer: {
-    padding: 10,
-  },
-  transactionsHeader: {
-    backgroundColor: 'grey',
     padding: 10,
   },
   transactionsHeaderText: {

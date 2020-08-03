@@ -3,6 +3,8 @@ import React, {useState} from 'react';
 import {StyleSheet, View, Text, TextInput, StatusBar} from 'react-native';
 import PrimaryButton from 'components/PrimaryButton';
 import {colours, spacing, borderRadii} from 'config/Theme';
+import Lock from 'icons/Lock';
+import Mail from 'icons/Mail';
 import {useNavigation} from '@react-navigation/core';
 
 export default function Login() {
@@ -24,7 +26,7 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={colours.orange} />
+      <StatusBar backgroundColor={colours.primary} />
       <View style={styles.topContainer}>
         <View style={styles.welcomeContainer}>
           <Text style={styles.textHeader}>Welcome to BanKing!</Text>
@@ -33,31 +35,47 @@ export default function Login() {
           </Text>
         </View>
         <View style={styles.inputsContainer}>
-          <TextInput
+          <View
             style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
               borderColor: error ? colours.danger : 'black',
               borderWidth: StyleSheet.hairlineWidth,
               borderRadius: 20,
-              textAlign: 'center',
-              width: 300,
-            }}
-            onChangeText={text => setUser(text)}
-            value={user}
-            placeholder={'Enter your user name'}
-          />
-          <TextInput
+            }}>
+            <Mail width={20} height={20} />
+            <TextInput
+              style={{
+                textAlign: 'left',
+                width: 250,
+              }}
+              onChangeText={text => setUser(text)}
+              value={user}
+              placeholder={'Enter your user name'}
+            />
+          </View>
+          <View
             style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
               borderColor: error ? colours.danger : 'black',
               borderWidth: StyleSheet.hairlineWidth,
               borderRadius: 20,
-              textAlign: 'center',
-              width: 300,
-            }}
-            onChangeText={text => setPassword(text)}
-            value={password}
-            placeholder={'Enter your password'}
-            secureTextEntry
-          />
+            }}>
+            <Lock width={20} height={20} />
+            <TextInput
+              style={{
+                textAlign: 'left',
+                width: 250,
+              }}
+              onChangeText={text => setPassword(text)}
+              value={password}
+              placeholder={'Enter your password'}
+              secureTextEntry
+            />
+          </View>
         </View>
       </View>
       <View style={styles.bottomContainer}>
@@ -66,7 +84,7 @@ export default function Login() {
           onPress={logon}
           colourText={colours.white}
           colourBG={colours.primary}
-          spacing={spacing.l}
+          spacing={spacing.m}
           borderRadius={borderRadii.xl}
         />
       </View>
