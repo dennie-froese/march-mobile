@@ -21,13 +21,13 @@ export default function FurtherAccountDetails() {
       Animated.parallel([
         Animated.timing(opacity.current, {
           toValue: 1,
-          duration: 1000,
+          duration: 600,
           useNativeDriver: true,
           easing: Easing.inOut(Easing.linear),
         }),
         Animated.timing(height.current, {
           toValue: 1,
-          duration: 1000,
+          duration: 600,
           useNativeDriver: true,
           easing: Easing.inOut(Easing.linear),
         }),
@@ -39,13 +39,13 @@ export default function FurtherAccountDetails() {
       Animated.parallel([
         Animated.timing(opacity.current, {
           toValue: 0,
-          duration: 1000,
+          duration: 600,
           useNativeDriver: true,
           easing: Easing.inOut(Easing.linear),
         }),
         Animated.timing(height.current, {
           toValue: 0,
-          duration: 1000,
+          duration: 600,
           useNativeDriver: true,
           easing: Easing.inOut(Easing.linear),
         }),
