@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useCallback} from 'react';
 import {StyleSheet, View, Text, StatusBar, BackHandler} from 'react-native';
 import AccountContainer from 'components/AccountContainer';
 import {useFocusEffect} from '@react-navigation/core';
 
 export default function Balances() {
   useFocusEffect(
-    React.useCallback(() => {
+    useCallback(() => {
       const onBackPress = () => {
         return true;
       };
@@ -31,8 +31,5 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     paddingTop: 10,
-  },
-  buttonContainer: {
-    alignItems: 'center',
   },
 });
