@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, {useState} from 'react';
-import {StyleSheet, View, Text, TextInput, StatusBar} from 'react-native';
+import {StyleSheet, View, Text, TextInput} from 'react-native';
 import PrimaryButton from 'components/PrimaryButton';
 import {colours, spacing, borderRadii} from 'config/Theme';
 import Lock from 'icons/Lock';
@@ -26,10 +26,11 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={colours.primary} />
       <View style={styles.topContainer}>
         <View style={styles.welcomeContainer}>
-          <Text style={styles.textHeader}>Welcome to BanKing!</Text>
+          <Text style={styles.textHeader}>
+            Welcome back to BanKing, good to see you again!
+          </Text>
           <Text style={styles.textSubheader}>
             Use your credentials below and logon to your account
           </Text>
