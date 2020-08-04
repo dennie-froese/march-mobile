@@ -18,7 +18,7 @@ export default function Login() {
     // setError for wrong credentials
     if (user === 'dennie' && password === '12345') {
       setError(false);
-      navigation.navigate('Balances');
+      navigation.navigate('Home');
     } else {
       setError(true);
     }
