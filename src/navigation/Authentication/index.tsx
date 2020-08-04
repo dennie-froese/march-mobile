@@ -1,13 +1,12 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {StackHeaderLeftButtonProps} from '@react-navigation/stack/lib/typescript/src/types';
 import Login from 'pages/Login';
 import Onboarding from 'pages/Onboarding';
-import Balances from 'pages/Balances';
-import Transactions from 'pages/Transactions';
+import SignUp from 'pages/SignUp';
+
 import {colours} from 'config/Theme';
 import {StatusBar} from 'react-native';
+import {StackHeaderLeftButtonProps} from '@react-navigation/stack/lib/typescript/src/types';
 
 const AuthenticationStack = createStackNavigator();
 
@@ -29,11 +28,19 @@ export default function AuthenticationNavigator() {
         <AuthenticationStack.Screen
           name="Login"
           component={Login}
-          options={{title: ''}}
+          options={{
+            title: '',
+            headerLeft: (props: StackHeaderLeftButtonProps) => null,
+          }}
         />
         <AuthenticationStack.Screen
           name="Onboarding"
           component={Onboarding}
+          options={{title: ''}}
+        />
+        <AuthenticationStack.Screen
+          name="SignUp"
+          component={SignUp}
           options={{title: ''}}
         />
       </AuthenticationStack.Navigator>
