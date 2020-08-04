@@ -27,7 +27,7 @@ export default function FurtherAccountDetails() {
         }),
         Animated.timing(height.current, {
           toValue: 1,
-          duration: 600,
+          duration: 200,
           useNativeDriver: true,
           easing: Easing.inOut(Easing.linear),
         }),
@@ -37,15 +37,9 @@ export default function FurtherAccountDetails() {
     }
     if (state === 'shrinking') {
       Animated.parallel([
-        Animated.timing(opacity.current, {
-          toValue: 0,
-          duration: 600,
-          useNativeDriver: true,
-          easing: Easing.inOut(Easing.linear),
-        }),
         Animated.timing(height.current, {
           toValue: 0,
-          duration: 600,
+          duration: 1,
           useNativeDriver: true,
           easing: Easing.inOut(Easing.linear),
         }),
