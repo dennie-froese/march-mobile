@@ -12,31 +12,30 @@ const Home = createBottomTabNavigator();
 export default function HomeNavigator() {
   return (
     <Home.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: () => {
-          if (route.name === 'Balances') {
-            return <Lock width={20} height={20} />;
-          } else if (route.name === 'Settings') {
-            return <Mail width={20} height={20} />;
-          }
-        },
-      })}
       tabBarOptions={{
-        activeTintColor: colours.grey,
-        inactiveTintColor: colours.pink,
+        activeTintColor: colours.primary,
+        inactiveTintColor: colours.secondary,
+        tabStyle: {paddingTop: 5},
+        allowFontScaling: true,
+        labelStyle: {fontSize: 16, padding: 5},
+        style: {
+          height: 60,
+          borderTopColor: colours.primary,
+          borderTopWidth: 4,
+        },
       }}>
       <Home.Screen
         name="Balances"
         component={BalancesNavigator}
         options={{
-          title: '',
+          tabBarIcon: props => <Lock width={20} height={20} />,
         }}
       />
       <Home.Screen
         name="Settings"
         component={Settings}
         options={{
-          title: '',
+          tabBarIcon: props => <Lock width={20} height={20} />,
         }}
       />
     </Home.Navigator>
