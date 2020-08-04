@@ -9,22 +9,21 @@ import {
 } from 'react-native';
 import PrimaryButton from 'components/PrimaryButton';
 import {colours, spacing, borderRadii} from 'config/Theme';
-import Lock from 'icons/Lock';
 import Mail from 'icons/Mail';
 import {useNavigation} from '@react-navigation/core';
 
-export default function Login() {
+export default function Onboarding() {
   const navigation = useNavigation();
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
-  function logon() {
+  function onboard() {
     //some user auth logic
     // setError for wrong credentials
-    if (user === 'dennie' && password === '12345') {
+    if (user.length > 0) {
       setError(false);
-      navigation.navigate('Balances');
+      navigation.navigate('SignUp', {userProp: user});
     } else {
       setError(true);
     }
@@ -65,7 +64,7 @@ export default function Login() {
       <View style={styles.bottomContainer}>
         <PrimaryButton
           title="Create my account!"
-          onPress={logon}
+          onPress={onboard}
           colourText={colours.white}
           colourBG={colours.primary}
           spacing={spacing.m}
