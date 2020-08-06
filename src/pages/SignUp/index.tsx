@@ -12,14 +12,25 @@ import {colours, spacing, borderRadii} from 'config/Theme';
 import Lock from 'icons/Lock';
 import Mail from 'icons/Mail';
 import {useNavigation} from '@react-navigation/core';
+import {
+  useStateUser,
+  useStatePassword,
+  useSetUser,
+  useSetPassword,
+} from 'hooks/useState';
 
-export default function SignUp({route}) {
-  const {userProp} = route.params;
+export default function SignUp() {
   const navigation = useNavigation();
-  const [user, setUser] = useState(userProp);
+  const user = useStateUser();
+  const password = useStatePassword();
+  // const setUser = useSetUser();
+  const setPassword = useSetPassword();
+  const [userTemp, setUserTemp] = useState(user);
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
   const [error, setError] = useState(false);
+
+  console.warn(user);
 
   function logon() {
     //some user auth logic
@@ -57,7 +68,7 @@ export default function SignUp({route}) {
                 textAlign: 'left',
                 width: 250,
               }}
-              onChangeText={text => setUser(text)}
+              // onChangeText={text => setUser(text)}
               value={user}
               placeholder={'Enter your user email address'}
             />

@@ -11,19 +11,22 @@ import PrimaryButton from 'components/PrimaryButton';
 import {colours, spacing, borderRadii} from 'config/Theme';
 import Mail from 'icons/Mail';
 import {useNavigation} from '@react-navigation/core';
+import {useStateUser, useSetUser} from 'hooks/useState';
 
 export default function Onboarding() {
   const navigation = useNavigation();
-  const [user, setUser] = useState('');
-  const [password, setPassword] = useState('');
+  const [userTemp, setUserTemp] = useState('');
+  const user = useStateUser();
+  const setUser = useSetUser(userTemp);
   const [error, setError] = useState(false);
 
   function onboard() {
     //some user auth logic
     // setError for wrong credentials
-    if (user.length > 0) {
+    if (userTemp.length > 0) {
       setError(false);
-      navigation.navigate('SignUp', {userProp: user});
+      setUser();
+      navigation.navigate('SignUp');
     } else {
       setError(true);
     }
@@ -54,8 +57,8 @@ export default function Onboarding() {
                 textAlign: 'left',
                 width: 250,
               }}
-              onChangeText={text => setUser(text)}
-              value={user}
+              onChangeText={text => setUserTemp(text)}
+              value={userTemp}
               placeholder={'Enter your user email address'}
             />
           </View>

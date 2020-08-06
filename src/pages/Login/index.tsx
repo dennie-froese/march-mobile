@@ -16,12 +16,12 @@ export default function Login() {
   function logon() {
     //some user auth logic
     // setError for wrong credentials
-    if (user === 'dennie' && password === '12345') {
-      setError(false);
-      navigation.navigate('Home');
-    } else {
-      setError(true);
-    }
+    // if (user === 'dennie' && password === '12345') {
+    setError(false);
+    navigation.navigate('Home');
+    // } else {
+    //   setError(true);
+    // }
   }
 
   return (
