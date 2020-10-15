@@ -77,8 +77,6 @@ export function useSetUser(userInput: string) {
     throw new Error('useIncDec must be used within a stateProvider');
   }
 
-  console.warn(`111${userInput}`);
-
   const useSetUser = useCallback(
     () => context({user: userInput, type: 'SETUSER'}),
     [context],
